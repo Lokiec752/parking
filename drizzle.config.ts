@@ -11,10 +11,5 @@ export default defineConfig({
     password: process.env.DB_PASSWORD || "",
     database: process.env.DB_NAME || "default_db",
     ssl: false,
-    // ssl: {
-    //   rejectUnauthorized: true,
-    //   // Aiven's PostgreSQL uses valid certificates from trusted authorities,
-    //   // so we don't need to specify a custom CA certificate
-    // },
   },
 });
