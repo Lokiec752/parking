@@ -1,20 +1,15 @@
-import { Pool } from 'pg';
-import fs from 'fs';
-import path from 'path';
-import { drizzle } from 'drizzle-orm/node-postgres';
-import { users } from '@/src/db/schema'; // Import the schema type
+import { Pool } from "pg";
+import fs from "fs";
+import path from "path";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { users } from "@/src/db/schema"; // Import the schema type
 
-// Load the CA certificate
-const caCert = fs.readFileSync(
-  path.resolve(__dirname, '../../certs/ca-certificate.crt')
-).toString();
+console.log("this is working nopw");
 
 const pool = new Pool({
-  connectionString: process.env.DB_URL,
-  ssl: {
-    // ca: caCert, // Use the CA certificate
-    rejectUnauthorized: true, // Ensure SSL verification is enabled
-  },
+  // postgres://postgres:parking@localhost:5432/parking
+  connectionString: `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}`,
+  ssl: false,
 });
 
 // Apply the schema type to the drizzle function
