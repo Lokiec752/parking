@@ -1,10 +1,15 @@
 import db from "@/src/db/config";
-import { users } from "@/src/db/schema";
-
-type ErrorWithMessage = Error & { message: string };
+import { users, UserSelect } from "@/src/db/schema";
 
 export default async function Home() {
-  const allUsers = await db.select().from(users);
+  let allUsers: UserSelect[];
 
-  return <pre>{JSON.stringify(allUsers, null, 2)}</pre>;
+  try {
+    allUsers = await db.select().from(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    allUsers = [];
+  }
+
+  return <div>{JSON.stringify(allUsers, null, 2)}</div>;
 }
