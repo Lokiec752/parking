@@ -8,6 +8,13 @@
       "when": 1730843502677,
       "tag": "0000_mean_northstar",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1731620286236,
+      "tag": "0001_common_goblin_queen",
+      "breakpoints": true
     }
   ]
 }
