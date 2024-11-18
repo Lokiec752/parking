@@ -1,6 +1,7 @@
 import db from "@/src/db/config";
 import { users, UserSelect } from "@/src/db/schema";
-import { RegisterForm } from "@/app/ui/register";
+import { RegisterForm } from "@/app/ui/RegisterForm";
+import { LoginForm } from "./ui/LoginForm";
 
 export default async function Home() {
   let allUsers: Omit<UserSelect, "password">[];
@@ -20,9 +21,13 @@ export default async function Home() {
   }
 
   return (
-    <div className="bg-orange-300 m-6 p-4 text-gray-950">
-      {JSON.stringify(allUsers, null, 2)}
-      <RegisterForm />
+    <div className="bg-orange-300 m-6 p-4 text-gray-950 flex flex-col items-center gap-4">
+      <div>{JSON.stringify(allUsers, null, 2)}</div>
+
+      <div className="flex flex-col gap-6">
+        <RegisterForm />
+        <LoginForm />
+      </div>
     </div>
   );
 }
