@@ -13,6 +13,7 @@ export default async function Home() {
         name: users.name,
         email: users.email,
         createdAt: users.createdAt,
+        updatedAt: users.updatedAt,
       })
       .from(users);
   } catch (error) {
